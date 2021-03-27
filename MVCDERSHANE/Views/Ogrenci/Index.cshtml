@@ -1,0 +1,60 @@
+﻿@using MVCDERSHANE.Models.Entitiy;
+@model List<TBLOGRENCİ>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1 style="color:#ee3d3d;">Öğrenci İşlemleri</h1>
+
+
+@using (Html.BeginForm("Index", "Ogrenci", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px">
+        <b>Aranacak Öğrenci Adını Giriniz:</b> @Html.TextBox("p")
+        <input type="submit" class="btn btn-info" value="Ara" />
+    </div>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>İD</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th>SINIF</th>
+        <th>CİNSİYET</th>
+        <th>ADRES</th>
+        <th>POSTA KOD</th>
+        <th>SEMT</th>
+        <th>ŞEHİR</th>
+        <th>TELEFON</th>
+        <th>DAL</th>
+        <th>BÖLÜMÜ</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var M in Model)
+    {
+        <tr>
+            <td>@M.İD</td>
+            <td>@M.AD</td>
+            <td>@M.SOYAD</td>
+            <td>@M.SINIFI</td>
+            <td>@M.CİNSİYETİ</td>
+            <td>@M.ADRES</td>
+            <td>@M.POSTAKOD</td>
+            <td>@M.SEMT</td>
+            <td>@M.SEHİR</td>
+            <td>@M.TELEFON</td>
+            <td>@M.DALI</td>
+            <td>@M.BOLUMU</td>
+            <td><a href="/Ogrenci/OgrenciSil/@M.İD" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Ogrenci/OgrenciGetir/@M.İD" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+<td><a href="/Ogrenci/OgrenciEkle/" class="btn btn-primary">Yeni Öğrenci Ekle</a></td>
+<p style="font-size: 15px; letter-spacing: 2px; color: #fff;  text-align:center; height:300px;" class="copyright-agileinfo">
+    <a>
+        &copy;Buket kaya Tarafından Yapılmıştır.
+    </a>
+</p>

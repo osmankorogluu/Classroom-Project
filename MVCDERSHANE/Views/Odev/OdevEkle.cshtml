@@ -1,0 +1,49 @@
+﻿@model MVCDERSHANE.Models.Entitiy.TBLODEV
+@{
+    ViewBag.Title = "OdevEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 style="color:red">Ödev İşlemleri</h2>
+
+<form class="form-group" method="post">
+    <div style="margin-top:15px">
+        <label>ÖĞRENCİ ADI</label>
+        <input type="text" class="form-control" name="OGRAD" />
+    </div>
+    <div style="margin-top:15px">
+        <label>ÖĞRENCİ SOYAD</label>
+        <input type="text" class="form-control" name="OGRSOYAD" />
+    </div>
+    <div style="margin-top:15px">
+        <label>SINIFI</label>
+        <input type="text" class="form-control" name="SINIFI" />
+    </div>
+    <div style="margin-top:15px">
+        <label>VERİLİŞ TARİHİ</label>
+        <input type="text" class="form-control" name="VERİLİSTARİH" value="@DateTime.Now.ToShortDateString()"/>
+    </div>
+    <div style="margin-top:15px">
+        <label>TESLİM TARİHİ</label>
+        <input type="text" class="form-control" name="TESLİMTARİH" value="@DateTime.Now.AddDays(7).ToShortDateString()"/>
+    </div>
+    <div style="margin-top:15px">
+        <label>VERİLEN NOT</label>
+        <input type="text" class="form-control" name="VERİLENNOT" />
+    </div>
+    <div style="margin-top:15px">
+        <label>MAİL</label>
+        <input type="text" class="form-control" name="MAİL" />
+    </div>
+    <div style="margin-top:15px">
+        <label>BÖLÜMÜ</label>
+        <input type="text" class="form-control" name="BOLUMU" />
+    </div>
+    <div style="margin-top:15px">
+        <label>DERS</label>
+        <input type="text" class="form-control" name="DERS" />
+    </div>
+    <div style="margin-top:15px;">
+        <button class="btn btn-info" id=" Btn1">Ödev Ekle</button>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+﻿@using MVCDERSHANE.Models.Entitiy
+@model List<TBLVELİ>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2 style="color: #ee3d3d;">Veli İşlemleri</h2>
+<div style="text-align:center; margin-bottom:15px;">
+<img src="~/Resimler/veli.jpg" style="height:250px" width="500" />
+</div>
+<table class="table table-bordered" style="color: black">
+    <tr>
+        <th>İD</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th>YAKINLIK</th>
+        <th>ADRES</th>
+        <th>POSTA KODU</th>
+        <th>TELEFON</th>
+        <th>TC</th>
+        <th>GELİRİ</th>
+      
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var M in Model)
+
+    {
+        <tr>
+            <td>@M.İD</td>
+            <td>@M.AD</td>
+            <td>@M.SOYAD</td>
+            <td>@M.YAKINLIK</td>
+            <td>@M.ADRES</td>
+            <td>@M.POSTAKOD</td>
+            <td>@M.TELEFON</td>
+            <td>@M.TC</td>
+            <td>@M.GELİRİ</td>
+           
+            <td><a href="/Veli/VeliSil/@M.İD" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Veli/VeliGetir/@M.İD" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+<td><a href="/Veli/VeliEkle/" class="btn btn-primary">YENİ VELİ EKLE</a></td>
+<p style="font-size: 15px; letter-spacing: 2px; color: #fff;  text-align:center; height:300px;" class="copyright-agileinfo"><a>&copy;Buket kaya Tarafından Yapılmıştır.
+</a></p>

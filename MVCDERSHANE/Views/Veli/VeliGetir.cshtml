@@ -1,0 +1,43 @@
+﻿@model MVCDERSHANE.Models.Entitiy.TBLVELİ
+@{
+    ViewBag.Title = "VeliGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>VeliGetir</h2>
+@using (Html.BeginForm("Guncelle", "Veli", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        @Html.LabelFor(k => k.İD)
+        @Html.TextBoxFor(k => k.İD, new { @class = "form-control" })
+        <br />
+        <label>VELİ ADI</label>
+        @Html.TextBoxFor(K => K.AD, new { @class = "form-control" })
+        <br />
+        <label>VELİ SOYAD</label>
+        @Html.TextBoxFor(k => k.SOYAD, new { @class = "form-control" })
+        <br />
+        <label>YAKINLIK</label>
+        @Html.TextBoxFor(k => k.YAKINLIK, new { @class = "form-control" })
+        <br />
+        <label>ADRES</label>
+        @Html.TextBoxFor(K => K.ADRES, new { @class = "form-control" })
+        <br />
+        <label>POSTA KODU</label>
+        @Html.TextBoxFor(k => k.POSTAKOD, new { @class = "form-control" })
+        <br />
+        <label>TELEFON</label>
+        @Html.TextBoxFor(k => k.TELEFON, new { @class = "form-control" })
+        <br />
+        <label>TC KİMLİK</label>
+        @Html.TextBoxFor(k => k.TC, new { @class = "form-control" })
+        <br />
+        <label>GELİRİ</label>
+        @Html.TextBoxFor(k => k.GELİRİ, new { @class = "form-control" })
+        <br />
+        </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

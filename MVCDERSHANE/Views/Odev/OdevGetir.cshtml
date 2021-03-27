@@ -1,0 +1,56 @@
+﻿@model MVCDERSHANE.Models.Entitiy.TBLODEV
+@{
+    ViewBag.Title = "OdevGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@using (Html.BeginForm("Guncelle", "Odev", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        @Html.LabelFor(k => k.İD)
+        @Html.TextBoxFor(k => k.İD, new { @class = "form-control" })
+        <br />
+
+        <label>ÖĞRENCİ ADI</label>
+        @Html.TextBoxFor(K => K.OGRAD, new { @class = "form-control" })
+        <br />
+
+        <label>ÖĞRENCİ SOYAD</label>
+        @Html.TextBoxFor(K => K.OGRSOYAD, new { @class = "form-control" })
+        <br />
+
+        <label>SINIFI</label>
+        @Html.TextBoxFor(K => K.SINIFI, new { @class = "form-control" })
+        <br />
+
+        <label>VERİLİŞ TARİHİ</label>
+        @Html.TextBoxFor(K => K.VERİLİSTARİH, new { @class = "form-control" })
+        <br />
+
+        <label>TESLİM TARİHİ</label>
+        @Html.TextBoxFor(K => K.TESLİMTARİH, new { @class = "form-control" })
+        <br />
+
+        <label>VERİLEN NOT</label>
+        @Html.TextBoxFor(K => K.VERİLENNOT, new { @class = "form-control" })
+        <br />
+
+        <label>MAİL</label>
+        @Html.TextBoxFor(K => K.MAİL, new { @class = "form-control" })
+        <br />
+
+        <label>BÖLÜMÜ</label>
+        @Html.TextBoxFor(K => K.BOLUMU, new { @class = "form-control" })
+        <br />
+
+        <label>DERS</label>
+        @Html.TextBoxFor(K => K.DERS, new { @class = "form-control" })
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="289894567a63495c88c39a7b2d26cf6b" Name="Diagram1">
+        <EntityTypeShape EntityType="DbMvcDershaneModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLBOLUM" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLDERS" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLODEV" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLOGRENCİ" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLVELİ" Width="1.5" PointX="6.875" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="DbMvcDershaneModel.FK_TBLODEV_TBLBOLUM" ManuallyRouted="false" />
+        <AssociationConnector Association="DbMvcDershaneModel.FK_TBLOGRENCİ_TBLBOLUM" ManuallyRouted="false" />
+        <AssociationConnector Association="DbMvcDershaneModel.FK_TBLODEV_TBLDERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLADMİN" Width="1.5" PointX="8.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DbMvcDershaneModel.TBLİLETİSİM" Width="1.5" PointX="5.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

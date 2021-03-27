@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbMvcDershaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLADMİN">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kulanici" Type="varchar" MaxLength="30" />
+          <Property Name="sifre" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBLBOLUM">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOLUMU" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBLDERS">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DERS" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBLİLETİSİM">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="int" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="EPOSTA" Type="varchar" MaxLength="50" />
+          <Property Name="ACIKLAMA" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLODEV">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OGRAD" Type="varchar" MaxLength="30" />
+          <Property Name="OGRSOYAD" Type="varchar" MaxLength="30" />
+          <Property Name="SINIFI" Type="varchar" MaxLength="30" />
+          <Property Name="VERİLİSTARİH" Type="smalldatetime" />
+          <Property Name="TESLİMTARİH" Type="smalldatetime" />
+          <Property Name="VERİLENNOT" Type="varchar" MaxLength="3" />
+          <Property Name="MAİL" Type="varchar" MaxLength="30" />
+          <Property Name="BOLUMU" Type="tinyint" />
+          <Property Name="DERS" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBLOGRENCİ">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="30" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+          <Property Name="SINIFI" Type="varchar" MaxLength="30" />
+          <Property Name="CİNSİYETİ" Type="varchar" MaxLength="6" />
+          <Property Name="ADRES" Type="varchar" MaxLength="30" />
+          <Property Name="POSTAKOD" Type="varchar" MaxLength="10" />
+          <Property Name="SEMT" Type="varchar" MaxLength="30" />
+          <Property Name="SEHİR" Type="varchar" MaxLength="20" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="11" />
+          <Property Name="DALI" Type="varchar" MaxLength="20" />
+          <Property Name="BOLUMU" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBLVELİ">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="30" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="30" />
+          <Property Name="YAKINLIK" Type="varchar" MaxLength="30" />
+          <Property Name="ADRES" Type="varchar" MaxLength="30" />
+          <Property Name="POSTAKOD" Type="varchar" MaxLength="6" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="11" />
+          <Property Name="TC" Type="varchar" MaxLength="11" />
+          <Property Name="GELİRİ" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK_TBLODEV_TBLBOLUM">
+          <End Role="TBLBOLUM" Type="Self.TBLBOLUM" Multiplicity="0..1" />
+          <End Role="TBLODEV" Type="Self.TBLODEV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLBOLUM">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLODEV">
+              <PropertyRef Name="BOLUMU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLODEV_TBLDERS">
+          <End Role="TBLDERS" Type="Self.TBLDERS" Multiplicity="0..1" />
+          <End Role="TBLODEV" Type="Self.TBLODEV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLDERS">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLODEV">
+              <PropertyRef Name="DERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRENCİ_TBLBOLUM">
+          <End Role="TBLBOLUM" Type="Self.TBLBOLUM" Multiplicity="0..1" />
+          <End Role="TBLOGRENCİ" Type="Self.TBLOGRENCİ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLBOLUM">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLOGRENCİ">
+              <PropertyRef Name="BOLUMU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbMvcDershaneModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLADMİN" EntityType="Self.TBLADMİN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLBOLUM" EntityType="Self.TBLBOLUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLDERS" EntityType="Self.TBLDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLİLETİSİM" EntityType="Self.TBLİLETİSİM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLODEV" EntityType="Self.TBLODEV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOGRENCİ" EntityType="Self.TBLOGRENCİ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLVELİ" EntityType="Self.TBLVELİ" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLODEV_TBLBOLUM" Association="Self.FK_TBLODEV_TBLBOLUM">
+            <End Role="TBLBOLUM" EntitySet="TBLBOLUM" />
+            <End Role="TBLODEV" EntitySet="TBLODEV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLODEV_TBLDERS" Association="Self.FK_TBLODEV_TBLDERS">
+            <End Role="TBLDERS" EntitySet="TBLDERS" />
+            <End Role="TBLODEV" EntitySet="TBLODEV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRENCİ_TBLBOLUM" Association="Self.FK_TBLOGRENCİ_TBLBOLUM">
+            <End Role="TBLBOLUM" EntitySet="TBLBOLUM" />
+            <End Role="TBLOGRENCİ" EntitySet="TBLOGRENCİ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbMvcDershaneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLBOLUM">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOLUMU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLODEV" Relationship="Self.FK_TBLODEV_TBLBOLUM" FromRole="TBLBOLUM" ToRole="TBLODEV" />
+          <NavigationProperty Name="TBLOGRENCİ" Relationship="Self.FK_TBLOGRENCİ_TBLBOLUM" FromRole="TBLBOLUM" ToRole="TBLOGRENCİ" />
+        </EntityType>
+        <EntityType Name="TBLDERS">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DERS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLODEV" Relationship="Self.FK_TBLODEV_TBLDERS" FromRole="TBLDERS" ToRole="TBLODEV" />
+        </EntityType>
+        <EntityType Name="TBLODEV">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OGRAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OGRSOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SINIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VERİLİSTARİH" Type="DateTime" Precision="0" />
+          <Property Name="TESLİMTARİH" Type="DateTime" Precision="0" />
+          <Property Name="VERİLENNOT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MAİL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BOLUMU" Type="Byte" />
+          <Property Name="DERS" Type="Byte" />
+          <NavigationProperty Name="TBLBOLUM" Relationship="Self.FK_TBLODEV_TBLBOLUM" FromRole="TBLODEV" ToRole="TBLBOLUM" />
+          <NavigationProperty Name="TBLDERS" Relationship="Self.FK_TBLODEV_TBLDERS" FromRole="TBLODEV" ToRole="TBLDERS" />
+        </EntityType>
+        <EntityType Name="TBLOGRENCİ">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SINIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CİNSİYETİ" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ADRES" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAKOD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEMT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SEHİR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DALI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BOLUMU" Type="Byte" />
+          <NavigationProperty Name="TBLBOLUM" Relationship="Self.FK_TBLOGRENCİ_TBLBOLUM" FromRole="TBLOGRENCİ" ToRole="TBLBOLUM" />
+        </EntityType>
+        <EntityType Name="TBLVELİ">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="YAKINLIK" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADRES" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAKOD" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="GELİRİ" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_TBLODEV_TBLBOLUM">
+          <End Role="TBLBOLUM" Type="Self.TBLBOLUM" Multiplicity="0..1" />
+          <End Role="TBLODEV" Type="Self.TBLODEV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLBOLUM">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLODEV">
+              <PropertyRef Name="BOLUMU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRENCİ_TBLBOLUM">
+          <End Role="TBLBOLUM" Type="Self.TBLBOLUM" Multiplicity="0..1" />
+          <End Role="TBLOGRENCİ" Type="Self.TBLOGRENCİ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLBOLUM">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLOGRENCİ">
+              <PropertyRef Name="BOLUMU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLODEV_TBLDERS">
+          <End Role="TBLDERS" Type="Self.TBLDERS" Multiplicity="0..1" />
+          <End Role="TBLODEV" Type="Self.TBLODEV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLDERS">
+              <PropertyRef Name="İD" />
+            </Principal>
+            <Dependent Role="TBLODEV">
+              <PropertyRef Name="DERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbMvcDershaneEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLBOLUM" EntityType="Self.TBLBOLUM" />
+          <EntitySet Name="TBLDERS" EntityType="Self.TBLDERS" />
+          <EntitySet Name="TBLODEV" EntityType="Self.TBLODEV" />
+          <EntitySet Name="TBLOGRENCİ" EntityType="Self.TBLOGRENCİ" />
+          <EntitySet Name="TBLVELİ" EntityType="Self.TBLVELİ" />
+          <AssociationSet Name="FK_TBLODEV_TBLBOLUM" Association="Self.FK_TBLODEV_TBLBOLUM">
+            <End Role="TBLBOLUM" EntitySet="TBLBOLUM" />
+            <End Role="TBLODEV" EntitySet="TBLODEV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRENCİ_TBLBOLUM" Association="Self.FK_TBLOGRENCİ_TBLBOLUM">
+            <End Role="TBLBOLUM" EntitySet="TBLBOLUM" />
+            <End Role="TBLOGRENCİ" EntitySet="TBLOGRENCİ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLODEV_TBLDERS" Association="Self.FK_TBLODEV_TBLDERS">
+            <End Role="TBLDERS" EntitySet="TBLDERS" />
+            <End Role="TBLODEV" EntitySet="TBLODEV" />
+          </AssociationSet>
+          <EntitySet Name="TBLADMİN" EntityType="DbMvcDershaneModel.TBLADMİN" />
+          <EntitySet Name="TBLİLETİSİM" EntityType="DbMvcDershaneModel.TBLİLETİSİM" />
+        </EntityContainer>
+        <EntityType Name="TBLADMİN">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kulanici" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLİLETİSİM">
+          <Key>
+            <PropertyRef Name="İD" />
+          </Key>
+          <Property Name="İD" Type="Int32" Nullable="false" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbMvcDershaneModelStoreContainer" CdmEntityContainer="DbMvcDershaneEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLBOLUM">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLBOLUM">
+              <MappingFragment StoreEntitySet="TBLBOLUM">
+                <ScalarProperty Name="İD" ColumnName="İD" />
+                <ScalarProperty Name="BOLUMU" ColumnName="BOLUMU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLDERS">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLDERS">
+              <MappingFragment StoreEntitySet="TBLDERS">
+                <ScalarProperty Name="İD" ColumnName="İD" />
+                <ScalarProperty Name="DERS" ColumnName="DERS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLODEV">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLODEV">
+              <MappingFragment StoreEntitySet="TBLODEV">
+                <ScalarProperty Name="İD" ColumnName="İD" />
+                <ScalarProperty Name="OGRAD" ColumnName="OGRAD" />
+                <ScalarProperty Name="OGRSOYAD" ColumnName="OGRSOYAD" />
+                <ScalarProperty Name="SINIFI" ColumnName="SINIFI" />
+                <ScalarProperty Name="VERİLİSTARİH" ColumnName="VERİLİSTARİH" />
+                <ScalarProperty Name="TESLİMTARİH" ColumnName="TESLİMTARİH" />
+                <ScalarProperty Name="VERİLENNOT" ColumnName="VERİLENNOT" />
+                <ScalarProperty Name="MAİL" ColumnName="MAİL" />
+                <ScalarProperty Name="BOLUMU" ColumnName="BOLUMU" />
+                <ScalarProperty Name="DERS" ColumnName="DERS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOGRENCİ">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLOGRENCİ">
+              <MappingFragment StoreEntitySet="TBLOGRENCİ">
+                <ScalarProperty Name="İD" ColumnName="İD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="SINIFI" ColumnName="SINIFI" />
+                <ScalarProperty Name="CİNSİYETİ" ColumnName="CİNSİYETİ" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="POSTAKOD" ColumnName="POSTAKOD" />
+                <ScalarProperty Name="SEMT" ColumnName="SEMT" />
+                <ScalarProperty Name="SEHİR" ColumnName="SEHİR" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="DALI" ColumnName="DALI" />
+                <ScalarProperty Name="BOLUMU" ColumnName="BOLUMU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLVELİ">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLVELİ">
+              <MappingFragment StoreEntitySet="TBLVELİ">
+                <ScalarProperty Name="İD" ColumnName="İD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="YAKINLIK" ColumnName="YAKINLIK" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="POSTAKOD" ColumnName="POSTAKOD" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="GELİRİ" ColumnName="GELİRİ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLADMİN">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLADMİN">
+              <MappingFragment StoreEntitySet="TBLADMİN">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="kulanici" ColumnName="kulanici" />
+                <ScalarProperty Name="İD" ColumnName="İD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLİLETİSİM">
+            <EntityTypeMapping TypeName="DbMvcDershaneModel.TBLİLETİSİM">
+              <MappingFragment StoreEntitySet="TBLİLETİSİM">
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="İD" ColumnName="İD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

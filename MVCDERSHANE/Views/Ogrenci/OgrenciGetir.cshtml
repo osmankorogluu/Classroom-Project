@@ -1,0 +1,66 @@
+﻿@model MVCDERSHANE.Models.Entitiy.TBLOGRENCİ
+@{
+    ViewBag.Title = "OgrenciGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Ogrenci", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        @Html.LabelFor(k => k.İD)
+        @Html.TextBoxFor(k => k.İD, new { @class = "form-control" })
+        <br />
+
+        <label>ADI</label>
+        @Html.TextBoxFor(K => K.AD, new { @class = "form-control" })
+        <br />
+
+        <label>SOYAD</label>
+        @Html.TextBoxFor(K => K.SOYAD, new { @class = "form-control" })
+        <br />
+
+        <label>SINIFI</label>
+        @Html.TextBoxFor(K => K.SINIFI, new { @class = "form-control" })
+        <br />
+
+        <label>CİNSİYET</label>
+        @Html.TextBoxFor(K => K.CİNSİYETİ, new { @class = "form-control" })
+        <br />
+
+        <label>ADRES</label>
+        @Html.TextBoxFor(K => K.ADRES, new { @class = "form-control" })
+        <br />
+
+        <label>POSTA KODU</label>
+        @Html.TextBoxFor(K => K.POSTAKOD, new { @class = "form-control" })
+        <br />
+
+        <label>SEMT</label>
+        @Html.TextBoxFor(K => K.SEMT, new { @class = "form-control" })
+        <br />
+
+        <label>ŞEHİR</label>
+        @Html.TextBoxFor(K => K.SEHİR, new { @class = "form-control" })
+        <br />
+
+        <label>TELEFON</label>
+        @Html.TextBoxFor(K => K.TELEFON, new { @class = "form-control" })
+        <br />
+
+        <label>DALI</label>
+        @Html.TextBoxFor(K => K.DALI, new { @class = "form-control" })
+        <br />
+
+        <label>BÖLÜMÜ</label>
+        @Html.DropDownListFor(k => k.TBLBOLUM.İD, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" });
+        <br />
+
+     
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+
+

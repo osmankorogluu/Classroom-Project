@@ -1,0 +1,47 @@
+﻿@using MVCDERSHANE.Models.Entitiy;
+@model List<TBLODEV>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2 style="color:red">Ödev İşlemleri</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>ÖĞRENCİ ADI</th>
+        <th>ÖĞRENCİ SOYADI</th>
+        <th>SINIFI</th>
+        <th>VERİLİŞ TARİHİ</th>
+        <th>TESLİM TARİHİ</th>
+        <th>VERİLEN NOT</th>
+        <th>MAİL</th>
+        <th>BÖLÜMÜ</th>
+        <th>DERS</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.İD</td>
+            <td>@m.OGRAD</td>
+            <td>@m.OGRSOYAD</td>
+            <td>@m.SINIFI</td>
+            <td>@m.VERİLİSTARİH</td>
+            <td>@m.TESLİMTARİH</td>
+            <td>@m.VERİLENNOT</td>
+            <td>@m.MAİL</td>
+            <td>@m.BOLUMU</td>
+            <td>@m.DERS</td>
+            <td><a href="/Odev/OdevSil/@m.İD" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Odev/OdevGetir/@m.İD" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+<td><a href="/Odev/OdevEkle/" class="btn btn-primary">Yeni Ödev Ekle</a></td>
+<<p style="font-size: 15px; letter-spacing: 2px; color: #fff;  text-align:center; height:300px;" class="copyright-agileinfo">
+    <a>
+        &copy;Buket kaya Tarafından Yapılmıştır.
+    </a>
+</p>
